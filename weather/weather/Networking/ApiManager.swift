@@ -18,6 +18,7 @@ final class ApiManager {
     private var session = URLSession(configuration: .default)
     private let decoder = JSONDecoder()
     private var baseUrl = Constants.baseUrl
+    private var cacheExpiryAfter: TimeInterval = 30
     
     // MARK: - Initializer
     private init() {
@@ -37,15 +38,16 @@ extension ApiManager {
     }
     
     @discardableResult
-    func performDataRequest(from endpoint: ApiEndpoints) async -> Data? {
-        if let request = try? createRequest(from: endpoint, baseUrl) {
-            if let data: Data = try? getCachedData(for: request) {
-                return data
-            } else {
-                return await getData(for: request)
-            }
+    func performDataRequest(from url: URL?) async -> Data? {
+        guard let url else { return nil }
+        
+        let request = URLRequest(url: url)
+        
+        if let data: Data = try? getCachedData(for: request) {
+            return data
+        } else {
+            return await getData(for: request)
         }
-        return nil
     }
 }
 
@@ -75,7 +77,7 @@ private extension ApiManager {
         do {
             let response: NetworkResponse = try await session.data(for: request)
             let decodedData = try decoder.decode(D.self, from: response.data)
-            cacheData(with: response, request: request)
+            cacheData(with: response, request: request, keepData: false)
             
             return decodedData
         } catch {
@@ -96,21 +98,42 @@ private extension ApiManager {
 
 // MARK: - Cache
 private extension ApiManager {
-    func cacheData(with response: NetworkResponse, request: URLRequest) {
+    func cacheData(with response: NetworkResponse, request: URLRequest, keepData: Bool = true) {
         let cachedResponse = CachedURLResponse(response: response.response, data: response.data)
         URLCache.shared.storeCachedResponse(cachedResponse, for: request)
+        
+        if keepData {
+            UserDefaults.standard[.cacheDate] = Date()
+        }
+    }
+    
+    func shouldRemoveCache(for request: URLRequest) -> Bool {
+        guard let cacheDate = UserDefaults.standard[.cacheDate]
+        else { return false }
+        
+        if Date().timeIntervalSince(cacheDate) > cacheExpiryAfter {
+            URLCache.shared.removeCachedResponse(for: request)
+            UserDefaults.standard[.cacheDate] = nil
+            return true
+        }
+        
+        return false
     }
     
     func getCachedData<D: Decodable>(for request: URLRequest) throws -> D? {
-        do {
-            if let cachedResponse = URLCache.shared.cachedResponse(for: request) {
-                let decodedData = try decoder.decode(D.self, from: cachedResponse.data)
-                return decodedData
-            } else {
-                return nil
+        if shouldRemoveCache(for: request) {
+            return nil
+        } else {
+            do {
+                if let cachedResponse = URLCache.shared.cachedResponse(for: request) {
+                    let decodedData = try decoder.decode(D.self, from: cachedResponse.data)
+                    return decodedData
+                } else {
+                    return nil
+                }
+            } catch {
+                throw error
             }
-        } catch {
-           throw error
         }
     }
 }

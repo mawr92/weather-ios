@@ -7,10 +7,14 @@
 
 import Foundation
 
-struct Forecast: Codable {
-    var days: [Weather]
+struct Forecast: Codable, Hashable, Equatable {
+    var list: [Weather]
     
-    enum CodingKeys: String, CodingKey {
-        case days = "list"
+    var todayForecast: [Weather] {
+        return list.filter({$0.date?.isToday() == true})
+    }
+    
+    var futureForecast: [Weather] {
+        return list.filter({$0.date?.isToday() == false})
     }
 }

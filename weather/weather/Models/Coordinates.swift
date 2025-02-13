@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Coordinates: Codable {
+struct Coordinates: Codable, Hashable, Equatable {
     var latitude: Double
     var longitude: Double
     

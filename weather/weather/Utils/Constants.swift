@@ -7,4 +7,6 @@
 
 struct Constants {
     static let baseUrl = "https://api.openweathermap.org"
+    static let iconUrl = "https://openweathermap.org"
+    static let locations = ["Buenos Aires", "Montevideo", "London"]
 }

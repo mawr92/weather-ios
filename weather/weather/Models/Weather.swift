@@ -7,13 +7,14 @@
 
 import Foundation
 
-struct Weather: Codable {
+struct Weather: Codable, Hashable, Equatable {
     var date: Date?
     var summary: [Summary]
     var conditions: Conditions
     var visibility: Int
     var wind: Wind
     var sun: Sun
+    var name: String?
     
     enum CodingKeys: String, CodingKey {
         case date = "dt_txt"
@@ -22,9 +23,22 @@ struct Weather: Codable {
         case visibility
         case wind
         case sun = "sys"
+        case name
     }
     
-    struct Summary: Codable {
+    var time: String {
+        date?.formatted(.dateTime.hour()) ?? ""
+    }
+    
+    var day: String {
+        date?.formatted(.dateTime.weekday(.wide)) ?? ""
+    }
+    
+    var momentOfTheDay: MomentOfTheDay {
+        return summary.first?.icon.contains("n") == true ? .night : .day
+    }
+    
+    struct Summary: Codable, Hashable, Equatable {
         var category: String
         var description: String
         var icon: String
@@ -35,12 +49,16 @@ struct Weather: Codable {
             case icon
         }
         
-        var iconPath: String {
-            "\(Constants.baseUrl)/img/wn/\(icon)@4x.png"
+        var iconPath: URL? {
+            URL(string: "\(Constants.iconUrl)/img/wn/\(icon)@4x.png")
+        }
+        
+        var capitalizedDescription: String {
+            description.capitalized
         }
     }
     
-    struct Conditions: Codable {
+    struct Conditions: Codable, Hashable, Equatable {
         var temperature: Double
         var feelsLike: Double
         var minTemperature: Double
@@ -56,9 +74,33 @@ struct Weather: Codable {
             case pressure
             case humidity
         }
+        
+        var formattedHumidity: String {
+            humidity.toPercentageString()
+        }
+        
+        var formattedTemperature: String {
+            temperature.toDegreesString()
+        }
+        
+        var formattedMaxTemperature: String {
+            maxTemperature.toDegreesString()
+        }
+        
+        var formattedMinTemperature: String {
+            minTemperature.toDegreesString()
+        }
+        
+        var formattedFeelsLike: String {
+            feelsLike.toDegreesString()
+        }
+        
+        var formattedPressure: String {
+            "\(Int(pressure)) hPa"
+        }
     }
     
-    struct Wind: Codable {
+    struct Wind: Codable, Hashable, Equatable {
         var speed: Double
         var degrees: Int
         
@@ -68,8 +110,18 @@ struct Weather: Codable {
         }
     }
     
-    struct Sun: Codable {
+    struct Sun: Codable, Hashable, Equatable {
         var sunrise: TimeInterval?
         var sunset: TimeInterval?
+        
+        var formattedSunrise: String {
+            guard let sunrise else { return "" }
+            return Date(timeIntervalSince1970: sunrise).formatted(.dateTime.hour())
+        }
+        
+        var formattedSunset: String {
+            guard let sunset else { return "" }
+            return Date(timeIntervalSince1970: sunset).formatted(.dateTime.hour())
+        }
     }
 }

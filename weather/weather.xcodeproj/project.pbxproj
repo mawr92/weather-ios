@@ -29,9 +29,22 @@
 		71B05DA22D57E64400538730 /* weatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		714814FF2D5EB2EE00A2EC99 /* Exceptions for "weather" folder in "weather" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 71B05D872D57E64000538730 /* weather */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		71B05D8A2D57E64000538730 /* weather */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				714814FF2D5EB2EE00A2EC99 /* Exceptions for "weather" folder in "weather" target */,
+			);
 			path = weather;
 			sourceTree = "<group>";
 		};
@@ -399,9 +412,15 @@
 				DEVELOPMENT_TEAM = TXL9VWWT84;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = weather/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show weather information";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show weather information";
+				INFOPLIST_KEY_NSLocationUsageDescription = "We need your location to show weather information";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show weather information";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -433,9 +452,15 @@
 				DEVELOPMENT_TEAM = TXL9VWWT84;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = weather/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show weather information";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show weather information";
+				INFOPLIST_KEY_NSLocationUsageDescription = "We need your location to show weather information";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show weather information";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
