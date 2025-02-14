@@ -415,6 +415,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = weather/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Thunder;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show weather information";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show weather information";
 				INFOPLIST_KEY_NSLocationUsageDescription = "We need your location to show weather information";
@@ -455,6 +456,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = weather/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Thunder;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show weather information";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show weather information";
 				INFOPLIST_KEY_NSLocationUsageDescription = "We need your location to show weather information";
