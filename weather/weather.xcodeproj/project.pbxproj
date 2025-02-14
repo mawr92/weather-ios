@@ -24,14 +24,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		71B05D882D57E64000538730 /* weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		71AB3EFF2D5EE63D00D3A157 /* weather.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = weather.xctestplan; sourceTree = "<group>"; };
+		71B05D882D57E64000538730 /* Thunder Forecast App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thunder Forecast App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B05D982D57E64400538730 /* weatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B05DA22D57E64400538730 /* weatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		714814FF2D5EB2EE00A2EC99 /* Exceptions for "weather" folder in "weather" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 71B05D872D57E64000538730 /* weather */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		71B05D8A2D57E64000538730 /* weather */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				714814FF2D5EB2EE00A2EC99 /* Exceptions for "weather" folder in "weather" target */,
+			);
 			path = weather;
 			sourceTree = "<group>";
 		};
@@ -75,6 +89,7 @@
 		71B05D7F2D57E64000538730 = {
 			isa = PBXGroup;
 			children = (
+				71AB3EFF2D5EE63D00D3A157 /* weather.xctestplan */,
 				71B05D8A2D57E64000538730 /* weather */,
 				71B05D9B2D57E64400538730 /* weatherTests */,
 				71B05DA52D57E64400538730 /* weatherUITests */,
@@ -85,7 +100,7 @@
 		71B05D892D57E64000538730 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				71B05D882D57E64000538730 /* weather.app */,
+				71B05D882D57E64000538730 /* Thunder Forecast App.app */,
 				71B05D982D57E64400538730 /* weatherTests.xctest */,
 				71B05DA22D57E64400538730 /* weatherUITests.xctest */,
 			);
@@ -114,7 +129,7 @@
 			packageProductDependencies = (
 			);
 			productName = weather;
-			productReference = 71B05D882D57E64000538730 /* weather.app */;
+			productReference = 71B05D882D57E64000538730 /* Thunder Forecast App.app */;
 			productType = "com.apple.product-type.application";
 		};
 		71B05D972D57E64400538730 /* weatherTests */ = {
@@ -192,6 +207,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 71B05D7F2D57E64000538730;
 			minimizedProjectReferenceProxies = 1;
@@ -328,6 +344,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -384,6 +401,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -399,9 +417,16 @@
 				DEVELOPMENT_TEAM = TXL9VWWT84;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = weather/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Thunder Forecast App";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show weather information";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show weather information";
+				INFOPLIST_KEY_NSLocationUsageDescription = "We need your location to show weather information";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show weather information";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -410,8 +435,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mawr.weather;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mawr.thunder-forecast";
+				PRODUCT_NAME = "Thunder Forecast App";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -433,9 +458,16 @@
 				DEVELOPMENT_TEAM = TXL9VWWT84;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = weather/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Thunder Forecast App";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show weather information";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show weather information";
+				INFOPLIST_KEY_NSLocationUsageDescription = "We need your location to show weather information";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show weather information";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -444,8 +476,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mawr.weather;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mawr.thunder-forecast";
+				PRODUCT_NAME = "Thunder Forecast App";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -475,7 +507,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/weather.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/weather";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Thunder Forecast App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Thunder Forecast App";
 			};
 			name = Debug;
 		};
@@ -498,7 +530,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/weather.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/weather";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Thunder Forecast App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Thunder Forecast App";
 			};
 			name = Release;
 		};
