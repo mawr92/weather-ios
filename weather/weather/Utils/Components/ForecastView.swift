@@ -29,7 +29,13 @@ private extension ForecastView {
                 .font(.headline)
                 .frame(maxWidth: .infinity)
             if let url = weather.summary.first?.iconPath {
-                CachedAsyncImage(url: url, size: .init(width: 30, height: 30))
+                Circle()
+                    .fill(Color.blue.opacity(0.2))
+                    .frame(width: 45, height: 45)
+                    .overlay {
+                        CachedAsyncImage(url: url, size: .init(width: 30, height: 30))
+                    }
+                
             }
             Text(weather.conditions.formattedTemperature)
                 .font(.title2)
@@ -43,20 +49,22 @@ private extension ForecastView {
     
     var horizontal: some View {
         HStack {
-            VStack {
+            VStack(alignment: .leading) {
                 Text(String(describing: weather.day))
                     .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 Text(String(describing: weather.time))
                     .font(.caption)
-                    .frame(maxWidth: .infinity, alignment: .leading)
             }
             Text(weather.conditions.formattedTemperature)
                 .font(.title2)
                 .frame(maxWidth: .infinity, alignment: .center)
             if let url = weather.summary.first?.iconPath {
-                CachedAsyncImage(url: url, size: .init(width: 50, height: 50))
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+                Circle()
+                    .fill(Color.blue.opacity(0.2))
+                    .frame(width: 50, height: 50)
+                    .overlay {
+                        CachedAsyncImage(url: url, size: .init(width: 45, height: 45))
+                    }
             }
         }
         .padding()

@@ -132,7 +132,8 @@ private extension WeatherViewModel {
         return ForecastInformation(
             lat: String(describing: coordinates.latitude),
             long: String(describing: coordinates.longitude),
-            unit: currentUnit.rawValue
+            unit: currentUnit.rawValue,
+            lang: Locale.current.languageCode ?? "en"
         )
     }
     

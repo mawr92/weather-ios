@@ -31,7 +31,7 @@ struct Weather: Codable, Hashable, Equatable {
     }
     
     var day: String {
-        date?.formatted(.dateTime.weekday(.wide)) ?? ""
+        date?.formatted(.dateTime.weekday(.wide)).localizedCapitalized ?? ""
     }
     
     var momentOfTheDay: MomentOfTheDay {

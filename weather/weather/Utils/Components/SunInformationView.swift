@@ -15,7 +15,7 @@ struct SunInformationView: View {
     
     var body: some View {
         HStack(spacing: 8) {
-            Text(condition.rawValue)
+            Text(condition.description)
                 .font(.headline)
                 .frame(maxWidth: .infinity)
                 .accessibilityIdentifier(titleAccessibilityIdentifier)
@@ -32,9 +32,18 @@ struct SunInformationView: View {
 
 // MARK: - Enum
 extension SunInformationView {
-    enum SunCondition: String {
-        case sunrise = "Sunrise"
-        case sunset = "Sunset"
+    enum SunCondition {
+        case sunrise
+        case sunset
+        
+        var description: String {
+            switch self {
+            case .sunrise:
+                return NSLocalizedString("Sunrise", comment: "").localizedCapitalized
+            case .sunset:
+                return NSLocalizedString("Sunset", comment: "").localizedCapitalized
+            }
+        }
         
         var image: Image {
             switch self {

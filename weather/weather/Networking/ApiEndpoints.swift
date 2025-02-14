@@ -16,7 +16,7 @@ protocol EndpointInformation {
 }
 
 // MARK: - Typealias
-typealias ForecastInformation = (lat: String, long: String, unit: String)
+typealias ForecastInformation = (lat: String, long: String, unit: String, lang: String)
 
 enum ApiEndpoints: EndpointInformation {
     case currentWeather(information: ForecastInformation)
@@ -70,6 +70,7 @@ enum ApiEndpoints: EndpointInformation {
         let latitude = URLQueryItem(name: "lat", value: information.lat)
         let longitude = URLQueryItem(name: "lon", value: information.long)
         let unit = URLQueryItem(name: "units", value: information.unit)
-        return [latitude, longitude, unit]
+        let lang = URLQueryItem(name: "lang", value: information.lang)
+        return [latitude, longitude, unit, lang]
     }
 }
