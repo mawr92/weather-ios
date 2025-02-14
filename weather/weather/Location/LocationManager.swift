@@ -8,14 +8,14 @@ import Foundation
 import CoreLocation
 import Combine
 
-class LocationManager: NSObject, ObservableObject {
+class LocationManager: NSObject, LocationManagerProtocol, ObservableObject {
     
     // MARK: - Private Properties
     private var locationManager: CLLocationManager!
     
     // MARK: - Public Properties
-    let currentLocation = PassthroughSubject<CLLocation?, Never>()
-    let locationAuthorizationStatus = PassthroughSubject<LocationAuthorizationStatus?, Never>()
+    var currentLocation = PassthroughSubject<CLLocation?, Never>()
+    var locationAuthorizationStatus = PassthroughSubject<LocationAuthorizationStatus?, Never>()
     
     // MARK: - Init
     override init() {
@@ -23,12 +23,15 @@ class LocationManager: NSObject, ObservableObject {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = .leastNormalMagnitude
-        locationManager.requestWhenInUseAuthorization()
     }
 }
 
 // MARK: - Public Methods
 extension LocationManager {
+    func requestAuthorization() {
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
     func requestLocation() {
         locationManager.requestLocation()
     }
@@ -56,14 +59,5 @@ extension LocationManager: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
         print("Did fail with error: \(error.localizedDescription)")
-    }
-}
-
-// MARK: - Location Permissions
-extension LocationManager {
-    enum LocationAuthorizationStatus {
-        case authorized
-        case unauthorized
-        case notDetermined
     }
 }

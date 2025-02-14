@@ -13,8 +13,8 @@ import CoreLocation
 final class WeatherViewModel: ObservableObject {
     typealias WeatherAndForecast = (weather: Weather?, forecast: Forecast?)
     // MARK: - Private Properties
-    private var repository: WeatherRepository?
-    private let locationManager = LocationManager()
+    private var repository: WeatherRepository
+    private let locationManager: LocationManagerProtocol
     private var cancellables = Set<AnyCancellable>()
     private var currentLocation: Coordinates?
     
@@ -26,12 +26,17 @@ final class WeatherViewModel: ObservableObject {
     // MARK: - Init
     init() {
         repository = WeatherRepositoryFactory.getRepository()
+        locationManager = LocationManagerFactory.getLocationManger()
         setupLocationManagerBindings()
     }
 }
 
 // MARK: - Public Methods
 extension WeatherViewModel {
+    func requestAuthorization() {
+        locationManager.requestAuthorization()
+    }
+    
     func loadInitialData() async {
         cleanup()
         state = .loading
@@ -67,7 +72,7 @@ private extension WeatherViewModel {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] location in
                 guard let location, let self else { return }
-                
+                self.state = .didFindLocation
                 let coordinates = Coordinates(
                     latitude: location.coordinate.latitude,
                     longitude: location.coordinate.longitude
@@ -85,6 +90,7 @@ private extension WeatherViewModel {
                 self?.state = .loading
                 switch status {
                 case .authorized:
+                    self?.state = .didAuthorizeLocation
                     self?.locationManager.requestLocation()
                 case .unauthorized:
                     Task {
@@ -175,7 +181,7 @@ private extension WeatherViewModel {
     
     func getCoordinates(for city: String) async -> Coordinates? {
         do {
-            let coordinates = try await repository?.getCoordinates(for: city) ?? []
+            let coordinates = try await repository.getCoordinates(for: city)
             return coordinates.first
         } catch {
             print("Error fetching coordinates: \(error)")
@@ -185,7 +191,7 @@ private extension WeatherViewModel {
     
     func loadWeather(for information: ForecastInformation) async -> Weather? {
         do {
-            return try await repository?.fetchCurrentWeather(for: information)
+            return try await repository.fetchCurrentWeather(for: information)
         } catch {
             print("ERROR FETCHING WEATHER: \(error)")
             return nil
@@ -194,7 +200,7 @@ private extension WeatherViewModel {
 
     func loadForecast(for information: ForecastInformation) async -> Forecast? {
         do {
-            return try await repository?.fetchForecast(for: information)
+            return try await repository.fetchForecast(for: information)
         } catch {
             print("ERROR FETCHING FORECAST: \(error)")
             return nil
@@ -220,6 +226,8 @@ private extension WeatherViewModel {
 extension WeatherViewModel {
     enum State {
         case idle
+        case didAuthorizeLocation
+        case didFindLocation
         case didLoad
         case loading
     }

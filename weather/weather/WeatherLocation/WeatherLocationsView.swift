@@ -45,6 +45,9 @@ struct WeatherLocationsView: View {
             .onReceive(viewModel.$state) { state in
                 handleState(state)
             }
+            .onAppear {
+                viewModel.requestAuthorization()
+            }
         }
         
     }

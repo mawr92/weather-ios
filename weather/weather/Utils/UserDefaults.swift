@@ -20,6 +20,11 @@ extension UserDefaults {
             setValue(newValue, forKey: key.name)
         }
     }
+    
+    static func removeAllKeys() {
+        standard[.cacheDate] = nil
+        standard[.selectedLocation] = nil
+    }
 }
 
 extension UserDefaults.Key {
