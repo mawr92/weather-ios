@@ -19,15 +19,17 @@ final class WeatherViewModel: ObservableObject {
     private var currentLocation: Coordinates?
     
     // MARK: - Published Properties
-    @Published var state: State = .idle
-    @Published var weatherLocations = [WeatherLocation]()
-    @Published var selectedLocation: WeatherLocation?
+    @Published private(set) var state: State = .idle
+    @Published private(set) var weatherLocations = [WeatherLocation]()
+    @Published private(set) var selectedLocation: WeatherLocation?
+    @Published private(set) var currentUnit: WeatherUnit = .celsius
     
     // MARK: - Init
     init() {
         repository = WeatherRepositoryFactory.getRepository()
         locationManager = LocationManagerFactory.getLocationManger()
         setupLocationManagerBindings()
+        setupUnitIfNeeded()
     }
 }
 
@@ -59,7 +61,16 @@ extension WeatherViewModel {
         let locationDictionary = ["lat": location.coordinates.latitude, "lon": location.coordinates.longitude]
         UserDefaults.standard[.selectedLocation] = locationDictionary
     }
+    
+    func changeWeatherUnit() {
+        currentUnit.toggle()
+        UserDefaults.standard[.currentUnit] = currentUnit.rawValue
+        Task {
+            await loadInitialData()
+        }
+    }
 }
+
 // MARK: - Private Methods
 private extension WeatherViewModel {
     func cleanup() {
@@ -121,7 +132,7 @@ private extension WeatherViewModel {
         return ForecastInformation(
             lat: String(describing: coordinates.latitude),
             long: String(describing: coordinates.longitude),
-            unit: "metric"
+            unit: currentUnit.rawValue
         )
     }
     
@@ -219,6 +230,11 @@ private extension WeatherViewModel {
             forecast: forecast,
             isCurrent: isCurrent
         )
+    }
+    
+    func setupUnitIfNeeded() {
+        guard let unit = UserDefaults.standard[.currentUnit] else { return }
+        currentUnit = WeatherUnit(rawValue: unit) ?? .celsius
     }
 }
 

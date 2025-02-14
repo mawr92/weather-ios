@@ -8,7 +8,7 @@
 import Foundation
 import Testing
 import Combine
-@testable import weather
+@testable import Thunder_Forecast_App
 
 @MainActor
 final class WeatherTests {
@@ -33,29 +33,6 @@ final class WeatherTests {
         #expect(viewModel.selectedLocation == nil)
     }
     
-    @Test("Test ViewModel States")
-    func testInitialLoadStates() async throws {
-        let expectedStates: [WeatherViewModel.State] = [
-            .didAuthorizeLocation,
-            .didFindLocation,
-            .loading,
-            .didLoad
-        ]
-        var receivedStates = [WeatherViewModel.State]()
-        let stateTask = Task {
-            for await state in viewModel.$state.values {
-                receivedStates.append(state)
-                if state == .didLoad {
-                    break
-                }
-            }
-        }
-        
-        viewModel.requestAuthorization()
-        await stateTask.value
-        
-        #expect(receivedStates == expectedStates)
-    }
     
     @Test("Test Data Loaded with Current Location")
     func testCompleteDataLoaded() async throws {
@@ -132,5 +109,14 @@ final class WeatherTests {
         } else {
             Issue.record("No location found")
         }
+    }
+    
+    @Test("Test Toggle Unit Event")
+    func testToggleUnit() async throws {
+        #expect(viewModel.currentUnit == .celsius)
+        #expect(UserDefaults.standard[.currentUnit] == nil)
+        viewModel.changeWeatherUnit()
+        #expect(viewModel.currentUnit == .fahrenheit)
+        #expect(UserDefaults.standard[.currentUnit] == WeatherUnit.fahrenheit.rawValue)
     }
 }

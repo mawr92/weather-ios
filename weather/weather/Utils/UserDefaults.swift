@@ -24,6 +24,7 @@ extension UserDefaults {
     static func removeAllKeys() {
         standard[.cacheDate] = nil
         standard[.selectedLocation] = nil
+        standard[.currentUnit] = nil
     }
 }
 
@@ -34,5 +35,9 @@ extension UserDefaults.Key {
     
     static var selectedLocation: UserDefaults.Key<[String: Double]> {
         return .init(name: "selectedLocation")
+    }
+    
+    static var currentUnit: UserDefaults.Key<String> {
+        return .init(name: "currentUnit")
     }
 }

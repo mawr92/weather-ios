@@ -504,7 +504,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/weather.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/weather";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Thunder Forecast App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Thunder Forecast App";
 			};
 			name = Debug;
 		};
@@ -527,7 +527,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/weather.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/weather";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Thunder Forecast App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Thunder Forecast App";
 			};
 			name = Release;
 		};

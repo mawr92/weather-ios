@@ -38,6 +38,16 @@ struct WeatherLocationsView: View {
             .frame(maxHeight: .infinity)
             .navigationTitle("Weather")
             .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        viewModel.changeWeatherUnit()
+                    } label: {
+                        viewModel.currentUnit.image
+                            .foregroundStyle(Color.background)
+                    }
+                }
+            }
             .onReceive(viewModel.$selectedLocation, perform: { location in
                 withAnimation(.easeInOut) {
                     showWeatherDetail = location != nil

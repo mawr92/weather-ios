@@ -9,7 +9,7 @@ import Foundation
 import Testing
 import Combine
 import CoreLocation
-@testable import weather
+@testable import Thunder_Forecast_App
 
 final class LocationManagerTests {
     private var locationManager: LocationManagerMock!
