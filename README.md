@@ -8,6 +8,7 @@ Welcome to **Weather App**, a SwiftUI application that will allow you to get cur
 - **5-Day every 3-Hours Forecast**
 - **Offline Mode with Caching**
 - **User-Friendly Interface**
+- **Switch between Celsius and Fahrenheit**
 - **Light/Dark Mode Support**
 - **iOS 15 as Minimum Deployment Target**
 
@@ -27,8 +28,8 @@ Offline mode was included by caching all the data that the app consumes. This fe
 ## Screenshots
 | Dark Mode | Light Mode |
 | --------------- | --------------- |
-| <img src="https://github.com/user-attachments/assets/c648b971-3ee4-4721-9ae7-52b74f407328" alt="Home Dark Mode" width="300"> | <img src="https://github.com/user-attachments/assets/f8ec02ba-07be-45b1-a1a7-6a253a91dcc3" alt="Home Light Mode" width="300"> |
-| <img src="https://github.com/user-attachments/assets/ac29fe16-aa76-484e-937f-080ec7e825b3" alt="Detail Dark Mode" width="300"> | <img src="https://github.com/user-attachments/assets/36ea5842-7a48-4eb1-9db3-fa1e6d861ecb" alt="Detail Light Mode" width="300"> |
+| <img src="https://github.com/user-attachments/assets/c0439841-7f27-4fb6-88ff-e8694ca3981b" alt="Home Dark Mode" width="300"> | <img src="https://github.com/user-attachments/assets/dc70f92b-55d1-4c7d-9aae-6928b9eda431" alt="Home Light Mode" width="300"> |
+| <img src="https://github.com/user-attachments/assets/2bb15662-85ff-4eb9-b534-d3387b4b0c1e" alt="Detail Dark Mode" width="300"> | <img src="https://github.com/user-attachments/assets/e528c154-2a07-48fa-9c2e-a4f79230569b" alt="Detail Light Mode" width="300"> |
 
 ## Getting Started
 
