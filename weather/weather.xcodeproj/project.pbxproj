@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		71AB3EFF2D5EE63D00D3A157 /* weather.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = weather.xctestplan; sourceTree = "<group>"; };
-		71B05D882D57E64000538730 /* weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		71B05D882D57E64000538730 /* Thunder Forecast App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thunder Forecast App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B05D982D57E64400538730 /* weatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B05DA22D57E64400538730 /* weatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -100,7 +100,7 @@
 		71B05D892D57E64000538730 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				71B05D882D57E64000538730 /* weather.app */,
+				71B05D882D57E64000538730 /* Thunder Forecast App.app */,
 				71B05D982D57E64400538730 /* weatherTests.xctest */,
 				71B05DA22D57E64400538730 /* weatherUITests.xctest */,
 			);
@@ -129,7 +129,7 @@
 			packageProductDependencies = (
 			);
 			productName = weather;
-			productReference = 71B05D882D57E64000538730 /* weather.app */;
+			productReference = 71B05D882D57E64000538730 /* Thunder Forecast App.app */;
 			productType = "com.apple.product-type.application";
 		};
 		71B05D972D57E64400538730 /* weatherTests */ = {
@@ -415,7 +415,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = weather/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Thunder;
+				INFOPLIST_KEY_CFBundleDisplayName = "Thunder Forecast App";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show weather information";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show weather information";
 				INFOPLIST_KEY_NSLocationUsageDescription = "We need your location to show weather information";
@@ -432,8 +432,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mawr.weather;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mawr.thunder-forecast";
+				PRODUCT_NAME = "Thunder Forecast App";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -456,7 +456,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = weather/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Thunder;
+				INFOPLIST_KEY_CFBundleDisplayName = "Thunder Forecast App";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show weather information";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show weather information";
 				INFOPLIST_KEY_NSLocationUsageDescription = "We need your location to show weather information";
@@ -473,8 +473,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mawr.weather;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mawr.thunder-forecast";
+				PRODUCT_NAME = "Thunder Forecast App";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

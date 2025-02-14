@@ -29,6 +29,7 @@ struct WeatherLocationsView: View {
                             }
                         }
                     )
+                    .ignoresSafeArea(edges: [.bottom])
                     .zIndex(2)
                 } else {
                     list
