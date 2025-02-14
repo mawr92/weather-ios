@@ -41,3 +41,4 @@ Offline mode was included by caching all the data that the app consumes. This fe
 2. Widgets development to see the forecast from the Home Screen
 3. Search and add other Locations
 4. Improve animations
+5. Error management
