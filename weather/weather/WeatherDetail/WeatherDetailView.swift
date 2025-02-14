@@ -35,6 +35,7 @@ struct WeatherDetailView: View {
                     }
                 }
             }
+            .accessibilityIdentifier(UITestIdentifiers.weatherDetailScroll)
         }
         .mask {
             RoundedRectangle(cornerRadius: 10)
@@ -67,43 +68,52 @@ private extension WeatherDetailView {
                     Text(weatherLocation.name ?? "")
                         .font(.headline)
                         .underline()
+                        .accessibilityIdentifier(UITestIdentifiers.weatherDetailLocationName)
+                        .onTapGesture {
+                            onClose()
+                        }
                     Image(systemName: "chevron.down")
                         .font(.body)
-                }
-                .onTapGesture {
-                    onClose()
                 }
                 Spacer()
                 if weatherLocation.isCurrent {
                     Text("Current location")
                         .font(.caption)
                         .frame(maxWidth: .infinity, alignment: .trailing)
+                        .accessibilityIdentifier(UITestIdentifiers.weatherDetailCurrentLocation)
                 }
             }
             Text(weatherLocation.weather.conditions.formattedTemperature)
                 .font(.largeTitle)
                 .frame(maxWidth: .infinity)
+                .accessibilityIdentifier(UITestIdentifiers.weatherDetailTemperature)
             Text(weatherLocation.weather.summary.first?.capitalizedDescription ?? "")
                 .font(.headline)
+                .accessibilityIdentifier(UITestIdentifiers.weatherDetailSummaryDescription)
             
             HStack(spacing: 8) {
                 Text("H: \(weatherLocation.weather.conditions.formattedMaxTemperature)")
                     .font(.caption)
+                    .accessibilityIdentifier(UITestIdentifiers.weatherDetailMaxTemperature)
                 Text("L: \(weatherLocation.weather.conditions.formattedMinTemperature)")
                     .font(.caption)
+                    .accessibilityIdentifier(UITestIdentifiers.weatherDetailMinTemperature)
             }
             HStack(spacing: 8) {
                 WeatherConditionView(
                     condition: .humidity,
-                    value: weatherLocation.weather.conditions.formattedHumidity
+                    value: weatherLocation.weather.conditions.formattedHumidity,
+                    accesibilityIdentifier: UITestIdentifiers.weatherDetailHumidity
                 )
                 WeatherConditionView(
                     condition: .realFeel,
-                    value: weatherLocation.weather.conditions.formattedFeelsLike
+                    value: weatherLocation.weather.conditions.formattedFeelsLike,
+                    accesibilityIdentifier: UITestIdentifiers.weatherDetailRealFeel
                 )
                 WeatherConditionView(
                     condition: .pressure,
-                    value: weatherLocation.weather.conditions.formattedPressure
+                    value: weatherLocation.weather.conditions.formattedPressure,
+                    accesibilityIdentifier: UITestIdentifiers.weatherDetailPressure
                 )
             }
         }
@@ -121,9 +131,19 @@ private extension WeatherDetailView {
     
     var sunrise: some View {
         HStack {
-            SunInformationView(condition: .sunrise, value: weatherLocation.weather.sun.formattedSunrise)
+            SunInformationView(
+                condition: .sunrise,
+                value: weatherLocation.weather.sun.formattedSunrise,
+                titleAccessibilityIdentifier: UITestIdentifiers.weatherDetailSunriseTitle,
+                valueAccessibilityIdentifier: UITestIdentifiers.weatherDetailSunrise
+            )
             SeparatorView()
-            SunInformationView(condition: .sunset, value: weatherLocation.weather.sun.formattedSunset)
+            SunInformationView(
+                condition: .sunset,
+                value: weatherLocation.weather.sun.formattedSunset,
+                titleAccessibilityIdentifier: UITestIdentifiers.weatherDetailSunsetTitle,
+                valueAccessibilityIdentifier: UITestIdentifiers.weatherDetailSunset
+            )
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -138,6 +158,7 @@ private extension WeatherDetailView {
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading)
+                .accessibilityIdentifier(UITestIdentifiers.weatherDetailTodayForecastTitle)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
                     ForEach(weatherLocation.forecast.todayForecast, id: \.self) { forecast in
@@ -154,6 +175,7 @@ private extension WeatherDetailView {
             Text("3-HOUR FORECAST")
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .accessibilityIdentifier(UITestIdentifiers.weatherDetailForecastTitle)
             VStack(spacing: 8) {
                 ForEach(weatherLocation.forecast.futureForecast, id: \.self) { forecast in
                     ForecastView(weather: forecast, layout: .horizontal)

@@ -16,5 +16,11 @@ extension Date {
     func getComponents(components: Set<Calendar.Component>) -> DateComponents {
         return Calendar.current.dateComponents(components, from: self)
     }
+    
+    func toFormattedString(_ format: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
 }
 

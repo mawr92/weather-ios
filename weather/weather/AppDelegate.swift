@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupCache()
+        handleArguments()
         return true
     }
 }
@@ -25,5 +26,11 @@ private extension AppDelegate {
         let diskCapacity = 100 * 1024 * 1024
         URLCache.shared.memoryCapacity = memoryCapacity
         URLCache.shared.diskCapacity = diskCapacity
+    }
+    
+    func handleArguments() {
+        if ProcessInfo.processInfo.reset {
+            UserDefaults.removeAllKeys()
+        }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct WeatherConditionView: View {
     var condition: WeatherCondition
     var value: String
+    var accesibilityIdentifier: String
     
     var body: some View {
         HStack {
@@ -17,8 +18,10 @@ struct WeatherConditionView: View {
                 .font(.body)
             Text(value)
                 .font(.body)
+                .accessibilityIdentifier(accesibilityIdentifier)
         }
         .frame(maxWidth: .infinity)
+        
     }
 }
 
@@ -41,5 +44,9 @@ extension WeatherConditionView {
 
 
 #Preview {
-    WeatherConditionView(condition: .humidity, value: "81%")
+    WeatherConditionView(
+        condition: .humidity,
+        value: "81%",
+        accesibilityIdentifier: "condition"
+    )
 }

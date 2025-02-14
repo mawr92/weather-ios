@@ -18,7 +18,7 @@ final class ApiManager {
     private var session = URLSession(configuration: .default)
     private let decoder = JSONDecoder()
     private var baseUrl = Constants.baseUrl
-    private var cacheExpiryAfter: TimeInterval = 30
+    private var cacheExpiryAfter: TimeInterval = 300
     
     // MARK: - Initializer
     private init() {

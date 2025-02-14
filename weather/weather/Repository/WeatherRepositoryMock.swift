@@ -127,7 +127,7 @@ private extension WeatherRepositoryMock {
                     "sys": {
                         "pod": "n"
                     },
-                    "dt_txt": "2025-02-10 03:00:00"
+                    "dt_txt": "\(Date().toFormattedString("yyyy-MM-dd HH:mm:ss"))"
                 },
                 {
                     "dt": 1739426400,
@@ -163,7 +163,7 @@ private extension WeatherRepositoryMock {
                     "sys": {
                         "pod": "n"
                     },
-                    "dt_txt": "2025-02-10 06:00:00"
+                    "dt_txt": "\(Date().toFormattedString("yyyy-MM-dd HH:mm:ss"))"
                 },
                 {
                     "dt": 1739437200,
@@ -199,7 +199,7 @@ private extension WeatherRepositoryMock {
                     "sys": {
                         "pod": "n"
                     },
-                    "dt_txt": "2025-02-10 09:00:00"
+                    "dt_txt": "\(Date().toFormattedString("yyyy-MM-dd HH:mm:ss"))"
                 },
                 {
                     "dt": 1739448000,
@@ -235,7 +235,7 @@ private extension WeatherRepositoryMock {
                     "sys": {
                         "pod": "d"
                     },
-                    "dt_txt": "2025-02-10 12:00:00"
+                    "dt_txt": "\(Date().toFormattedString("yyyy-MM-dd HH:mm:ss"))"
                 },
                 {
                     "dt": 1739458800,
@@ -271,7 +271,7 @@ private extension WeatherRepositoryMock {
                     "sys": {
                         "pod": "d"
                     },
-                    "dt_txt": "2025-02-10 15:00:00"
+                    "dt_txt": "\(Date().toFormattedString("yyyy-MM-dd HH:mm:ss"))"
                 },
                 {
                     "dt": 1739469600,

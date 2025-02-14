@@ -13,6 +13,10 @@ extension ProcessInfo {
         contains("-testing")
     }
     
+    var reset: Bool {
+        contains("-reset")
+    }
+    
     var preview: Bool {
         environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
     }

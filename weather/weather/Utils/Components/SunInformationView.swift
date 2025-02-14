@@ -10,17 +10,21 @@ import SwiftUI
 struct SunInformationView: View {
     var condition: SunCondition
     var value: String
+    var titleAccessibilityIdentifier: String
+    var valueAccessibilityIdentifier: String
     
     var body: some View {
         HStack(spacing: 8) {
             Text(condition.rawValue)
                 .font(.headline)
                 .frame(maxWidth: .infinity)
+                .accessibilityIdentifier(titleAccessibilityIdentifier)
             HStack(spacing: 4) {
                 condition.image
                     .foregroundStyle(condition.foregroundColor)
                 Text(value)
                     .frame(maxWidth: .infinity)
+                    .accessibilityIdentifier(valueAccessibilityIdentifier)
             }
         }
     }
@@ -49,5 +53,10 @@ extension SunInformationView {
 }
 
 #Preview {
-    SunInformationView(condition: .sunrise, value: "6:54 PM")
+    SunInformationView(
+        condition: .sunrise,
+        value: "6:54 PM",
+        titleAccessibilityIdentifier: "title",
+        valueAccessibilityIdentifier: "value"
+    )
 }

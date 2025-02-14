@@ -21,11 +21,13 @@ struct WeatherLocationCardView: View {
         HStack(spacing: 8) {
             if let url = location.weather.summary.first?.iconPath {
                 CachedAsyncImage(url: url, size: .init(width: 50, height: 50))
+                    .accessibilityIdentifier("\(UITestIdentifiers.locationCardIcon)-\(location.name ?? "")")
             }
             VStack(alignment: .leading) {
                 if let name = location.name {
                     Text(name)
                         .font(.title3)
+                        .accessibilityIdentifier("\(UITestIdentifiers.locationCardLocationName)-\(name)")
                 }
                 
                 if location.isCurrent {
@@ -35,17 +37,21 @@ struct WeatherLocationCardView: View {
                 Spacer()
                 Text(location.weather.summary.first?.capitalizedDescription ?? "")
                     .font(.footnote)
+                    .accessibilityIdentifier("\(UITestIdentifiers.locationCardDescription)-\(location.name ?? "")")
             }
             VStack(alignment: .trailing) {
                 Text(location.weather.conditions.formattedTemperature)
                     .font(.title)
                     .frame(maxWidth: .infinity, alignment: .trailing)
+                    .accessibilityIdentifier("\(UITestIdentifiers.locationCardTemperature)-\(location.name ?? "")")
                 Spacer()
                 HStack {
                     Text("H: \(location.weather.conditions.formattedMaxTemperature)")
                         .font(.caption)
+                        .accessibilityIdentifier("\(UITestIdentifiers.locationCardMaxTemperature)-\(location.name ?? "")")
                     Text("L: \(location.weather.conditions.formattedMinTemperature)")
                         .font(.caption)
+                        .accessibilityIdentifier("\(UITestIdentifiers.locationCardMinTemperature)-\(location.name ?? "")")
                 }
             }
         }

@@ -81,6 +81,7 @@ private extension WeatherLocationsView {
                 .padding()
             }
             .zIndex(1)
+            .accessibilityIdentifier(UITestIdentifiers.weatherLocationScroll)
         }
     }
 }
